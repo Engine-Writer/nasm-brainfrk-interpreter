@@ -1,5 +1,5 @@
 section .bss
-myMemory: resb 8192  ; 4096 * 2. approx 2 pages
+myMemory: resb 16384  ; 4096 * 4 = 4 pages of RAM
 statbuf: resb 144
 
 section .text
@@ -59,7 +59,7 @@ main_interpreter_fn:
     cmp r9, r10
     jae .return_end_fncshn
 
-    and r8, 0x1FFF  ; fym talkin bout some "aSseMBly iSN'T meMORY sAfE"
+    and r8, 0x3FFF  ; fym talkin bout some "aSseMBly iSN'T meMORY sAfE"
     lea rsi, [myMemory + r8]
     mov al, [r9]
 
